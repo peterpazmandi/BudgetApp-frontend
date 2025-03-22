@@ -1,12 +1,16 @@
+import { JSX } from "react";
 import AppLogo from "../../assets/png/app_logo.png";
 import DarkModeToggler from "../../components/DarkModeToggler";
 
-const AuthFrame = () => {
+interface AuthFrameProps {
+  leftContent: JSX.Element;
+}
+
+const AuthFrame = (props: AuthFrameProps) => {
   return (
     <div className="grid items-center h-screen ps-80 pe-80">
-      <div className=" justify-center h-[80%] grid grid-cols-5 shadow-xl shadow-slate-500 dark:shadow-slate-500 rounded-lg">
-        
-        <div className="col-span-2 p-6 bg-emerald-500 dark:bg-slate-800 rounded-tl-lg rounded-bl-lg">
+      <div className="justify-center h-[80%] grid grid-cols-5 shadow-xl rounded-lg color-background">
+        <div className="col-span-2 p-6 color-primary rounded-tl-lg rounded-bl-lg">
           <div className="flex justify-between">
             <div className="flex items-center">
               <img
@@ -20,13 +24,14 @@ const AuthFrame = () => {
 
             <DarkModeToggler />
           </div>
-          <div className="p-14">t</div>
+          <div className="grid place-items-center h-[80%]">
+            {props.leftContent}
+          </div>
         </div>
 
-        <div className="col-span-3 p-20 bg-slate-200 dark:bg-slate-700 rounded-tr-lg rounded-br-lg">
+        <div className="col-span-3 p-20 color-container rounded-tr-lg rounded-br-lg">
           t
         </div>
-
       </div>
     </div>
   );

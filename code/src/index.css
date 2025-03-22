@@ -1,3 +1,27 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+@layer components {
+  .color-primary {
+    @apply bg-emerald-500 dark:bg-slate-800
+  }
+  .color-primary-invert {
+    @apply  bg-slate-200  dark:bg-emerald-500
+  }
+  .color-primary-invert-hover {
+    @apply  hover:bg-emerald-600 dark:hover:bg-slate-900 
+  }
+  .color-primary-invert-border {
+    @apply  border-2 border-solid border-slate-200 dark:border-emerald-500
+  }
+  .color-background {
+    @apply shadow-slate-500 dark:shadow-slate-500
+  }
+  .color-container {
+    @apply bg-slate-200 dark:bg-slate-700
+  }
+  .color-text {
+    @apply text-slate-800 dark:text-slate-200
+  }
+}
