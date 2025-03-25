@@ -4,6 +4,7 @@ import DarkModeToggler from "../../components/DarkModeToggler";
 
 interface AuthFrameProps {
   leftContent: JSX.Element;
+  rightContent: JSX.Element;
 }
 
 const AuthFrame = (props: AuthFrameProps) => {
@@ -25,12 +26,14 @@ const AuthFrame = (props: AuthFrameProps) => {
             <DarkModeToggler />
           </div>
           <div className="grid place-items-center h-[80%]">
-            {props.leftContent}
+            <div className="items-center text-center">{props.leftContent}</div>
           </div>
         </div>
 
         <div className="col-span-3 p-20 color-container rounded-tr-lg rounded-br-lg">
-          t
+          <div className="grid place-items-center h-[80%]">
+            <div className="items-center text-center">{props.rightContent}</div>
+          </div>
         </div>
       </div>
     </div>

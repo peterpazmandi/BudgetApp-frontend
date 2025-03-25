@@ -1,23 +1,24 @@
 import { Suspense } from "react";
-import ButtonInvert from "../../components/ButtonInvert";
 import Layout from "../../components/Layout";
 import AuthFrame from "./AuthFrame";
-import H1 from "../../components/h1";
+import ButtonInvert from "../../components/ButtonInvert";
+import H1 from "../../components/H1";
+import LoginForm from "./components/LoginForm";
 
 const Login = () => {
-  const rightContent = (
-    <div className="items-center text-center">
-      <H1 text="Welcome!" />
-      <p className="text-slate-200">Do you have already registered?</p>
-      <p className="text-slate-200 pb-20">Then login with your personal info</p>
-      <ButtonInvert>Login</ButtonInvert>
-    </div>
+  const leftContent = (
+    <>
+      <H1 text="Hello, Friend!" className="text-slate-200" />
+      <p className="text-slate-200">Enter your personal details</p>
+      <p className="text-slate-200 pb-20">and start journey with us</p>
+      <ButtonInvert>Register</ButtonInvert>
+    </>
   );
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Layout hideAppBar>
-        <AuthFrame leftContent={rightContent} />
+        <AuthFrame leftContent={leftContent} rightContent={<LoginForm />} />
       </Layout>
     </Suspense>
   );

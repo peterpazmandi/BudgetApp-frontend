@@ -6,6 +6,9 @@
   .color-primary {
     @apply bg-emerald-500 dark:bg-slate-800
   }
+  .color-secondary {
+    @apply text-slate-200 dark:bg-slate-800
+  }
   .color-primary-invert {
     @apply  bg-slate-200  dark:bg-emerald-500
   }
@@ -21,7 +24,13 @@
   .color-container {
     @apply bg-slate-200 dark:bg-slate-700
   }
-  .color-text {
+  .color-text-primary {
+    @apply text-emerald-500 dark:text-slate-200
+  }
+  .color-text-secondary-invert {
     @apply text-slate-800 dark:text-slate-200
+  }
+  .color-input-primary {
+    @apply bg-slate-50 dark:bg-slate-800
   }
 }
