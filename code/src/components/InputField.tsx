@@ -10,7 +10,10 @@ interface InputFieldProps {
 
 const InputField = (props: InputFieldProps) => {
   return (
-    <div className="relative w-100 rounded-full color-input-primary mt-4 mb-4">
+    <div className="relative rounded-full color-input-primary mt-4 mb-4
+                    w-full
+                    sm:w-80
+                    lg:w-100">
       {/* Icon */}
       <div className="absolute w-5 left-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:invert dark:brightness-0" >
         {props.icon}
@@ -22,7 +25,10 @@ const InputField = (props: InputFieldProps) => {
         type={props.type}
         value={props.value}
         onChange={(e) => props.setValue(e.target.value)}
-        className="peer color-input-primary color-text-secondary-invert w-100 border border-gray-300 rounded-full px-10 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        className="peer color-input-primary color-text-secondary-invert border border-gray-300 rounded-full px-10 pt-5 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+                  w-full
+                  sm:w-80
+                  lg:w-100"
         placeholder="" /* Keep placeholder empty to prevent overlap */
       />
 

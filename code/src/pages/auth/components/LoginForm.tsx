@@ -1,6 +1,5 @@
 import { useState } from "react";
 import ButtonInvert from "../../../components/ButtonInvert";
-import H1 from "../../../components/H1";
 import InputField from "../../../components/InputField";
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
 import { LockClosedIcon } from "@heroicons/react/24/outline";
@@ -8,8 +7,7 @@ import { LockClosedIcon } from "@heroicons/react/24/outline";
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   return (
-    <div className="items-center text-center">
-      <H1 text="Welcome, back!" className="color-text-primary" />
+    <>
       <InputField
         id="email"
         type="text"
@@ -30,8 +28,8 @@ const LoginForm = () => {
         }}
         icon={<LockClosedIcon />}
       />
-      <ButtonInvert>Login</ButtonInvert>
-    </div>
+      <ButtonInvert className="mt-20">Login</ButtonInvert>
+    </>
   );
 };
 
