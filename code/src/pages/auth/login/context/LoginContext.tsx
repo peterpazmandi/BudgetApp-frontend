@@ -5,6 +5,7 @@ import {
   loginReducer,
   LoginState,
 } from "../reducer/reducer";
+import { LoginRequestDto } from "../../../../api";
 
 export interface LoginContext {
   state: LoginState;
@@ -19,10 +20,13 @@ export function LoginProvider(props: {
   children: React.ReactNode;
 }): React.ReactElement {
   const [state, dispatch] = useReducer(loginReducer, initialLoginState);
-  const loginMutation = useLoginMutation("/login");
+  const loginMutation = useLoginMutation({
+    email: state.email,
+    password: state.password,
+  } as LoginRequestDto);
 
   const handleLogin = () => {
-    console.log(state)
+    loginMutation.mutate();
   };
 
   const handleEmailChange = (email: string) => {

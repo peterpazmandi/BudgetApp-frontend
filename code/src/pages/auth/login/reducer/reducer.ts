@@ -15,6 +15,8 @@ export type LoginState = {
 export const initialLoginState: LoginState = {
     email: "",
     password: "",
+    loading: false,
+    error: null,
 }
 
 export const loginReducer = (state: LoginState, action: LoginAction) => {
