@@ -1,11 +1,10 @@
 import { SnackbarProvider } from "notistack";
 import { Suspense } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import FullPageSpinner from "./components/FullPageSpinner";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
-import Login from "./pages/auth/login/Login";
 import ReactQueryProvider from "./providers/ReactQueryProvider";
+import BudgetAppRoutes from "./router/BudgetAppRoutes";
 
 function App() {
   return (
@@ -19,10 +18,7 @@ function App() {
         >
           <BrowserRouter>
             <Suspense fallback={<FullPageSpinner />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-              </Routes>
+              <BudgetAppRoutes />
             </Suspense>
           </BrowserRouter>
         </SnackbarProvider>

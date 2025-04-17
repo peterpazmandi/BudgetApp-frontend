@@ -5,14 +5,22 @@ import ButtonInvert from "../../../components/ButtonInvert";
 import H1 from "../../../components/H1";
 import LoginForm from "./components/LoginForm";
 import { LoginProvider } from "./context/LoginContext";
+import { useNavigate } from "react-router-dom";
+import { REGISTER_ROUTE } from "../../../router/Routes";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const handleRegisterButtonClick = () => {
+    navigate(REGISTER_ROUTE);
+  };
+  
   const leftContent = (
     <>
       <H1 text="Hello, Friend!" className="pb-20 text-slate-200" />
       <p className="text-slate-200">Enter your personal details</p>
       <p className="text-slate-200 pb-20">and start journey with us</p>
-      <ButtonInvert>Register</ButtonInvert>
+      <ButtonInvert onClick={handleRegisterButtonClick}>Register</ButtonInvert>
     </>
   );
 
