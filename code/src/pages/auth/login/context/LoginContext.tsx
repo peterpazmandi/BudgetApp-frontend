@@ -4,7 +4,7 @@ import {
   initialLoginState,
   loginReducer,
   LoginState,
-} from "../reducer/reducer";
+} from "../reducer/loginReducer";
 import { LoginRequestDto } from "../../../../api";
 
 export interface LoginContext {

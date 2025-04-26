@@ -1,6 +1,8 @@
 import { JSX } from "react";
 import AppLogo from "../../assets/png/app_logo.png";
 import DarkModeToggler from "../../components/DarkModeToggler";
+import { useNavigate } from "react-router-dom";
+import { LANDING_PAGE_ROUTE } from "../../router/Routes";
 
 interface AuthFrameProps {
   leftContent: JSX.Element;
@@ -8,6 +10,11 @@ interface AuthFrameProps {
 }
 
 const AuthFrame = (props: AuthFrameProps) => {
+  const navigate = useNavigate();
+
+  const handleLogoButtonClick = () => {
+    navigate(LANDING_PAGE_ROUTE);
+  };
   return (
     <div
       className="grid items-center h-screen
@@ -24,7 +31,7 @@ const AuthFrame = (props: AuthFrameProps) => {
                         col-span-2 p-6 color-primary rounded-tl-lg rounded-bl-lg"
         >
           <div className="flex justify-between">
-            <div className="flex items-center">
+            <div className="flex items-center cursor-pointer" onClick={handleLogoButtonClick}>
               <img
                 src={AppLogo}
                 alt="Logo"

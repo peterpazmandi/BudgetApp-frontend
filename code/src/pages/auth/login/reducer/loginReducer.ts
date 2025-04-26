@@ -1,9 +1,6 @@
 export type LoginAction =
   | { type: "SET_EMAIL"; payload: string }
-  | { type: "SET_PASSWORD"; payload: string }
-  | { type: "LOGIN_START" }
-  | { type: "LOGIN_SUCCESS" }
-  | { type: "LOGIN_FAILURE" };
+  | { type: "SET_PASSWORD"; payload: string };
 
 export type LoginState = {
   email: string;
