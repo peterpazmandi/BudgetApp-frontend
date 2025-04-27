@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import {
   initialRegisterState,
   registerReducer,
@@ -6,6 +6,7 @@ import {
 } from "../reducer/registerReducer";
 import { useRegisterMutation } from "../api/use-register-hook";
 import { RegisterRequestDto } from "../../../../api";
+import { useLoading } from "../../../../contexts/LoadingContext";
 
 export interface RegisterContext {
   state: RegisterState;
@@ -25,6 +26,11 @@ export function RegisterProvider(props: {
 }): React.ReactElement {
   const [state, dispatch] = useReducer(registerReducer, initialRegisterState);
   const registerMutation = useRegisterMutation();
+  const { setIsLoading } = useLoading();
+
+  useEffect(() => {
+    setIsLoading(registerMutation.isPending);
+  }, [setIsLoading, registerMutation.isPending]);
 
   const handleRegister = () => {
     registerMutation.mutate(

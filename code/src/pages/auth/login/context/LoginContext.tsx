@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import { useLoginMutation } from "../api/use-login-hooks";
 import {
   initialLoginState,
@@ -6,9 +6,12 @@ import {
   LoginState,
 } from "../reducer/loginReducer";
 import { LoginRequestDto } from "../../../../api";
+import { useSnackbar } from "notistack";
+import { useLoading } from "../../../../contexts/LoadingContext";
 
 export interface LoginContext {
   state: LoginState;
+  isLoading: boolean;
   handleEmailChange: (email: string) => void;
   handlePasswordChange: (password: string) => void;
   handleLogin: () => void;
@@ -20,13 +23,29 @@ export function LoginProvider(props: {
   children: React.ReactNode;
 }): React.ReactElement {
   const [state, dispatch] = useReducer(loginReducer, initialLoginState);
-  const loginMutation = useLoginMutation({
-    email: state.email,
-    password: state.password,
-  } as LoginRequestDto);
+  const loginMutation = useLoginMutation();
+  const {setIsLoading} = useLoading();
+  const { enqueueSnackbar } = useSnackbar();
+
+  useEffect(() => {
+    setIsLoading(loginMutation.isPending);
+  }, [setIsLoading, loginMutation.isPending]);
 
   const handleLogin = () => {
-    loginMutation.mutate();
+    loginMutation.mutate(
+      {
+        email: state.email,
+        password: state.password,
+      } as LoginRequestDto,
+      {
+        onSuccess: () => {
+          enqueueSnackbar(
+            "You have successfully logged in, we will redirect you in a moment.",
+            { variant: "success" }
+          );
+        },
+      }
+    );
   };
 
   const handleEmailChange = (email: string) => {
@@ -45,7 +64,13 @@ export function LoginProvider(props: {
 
   return (
     <loginContext.Provider
-      value={{ state, handleEmailChange, handlePasswordChange, handleLogin }}
+      value={{
+        state,
+        isLoading: loginMutation.isPending,
+        handleEmailChange,
+        handlePasswordChange,
+        handleLogin,
+      }}
     >
       {props.children}
     </loginContext.Provider>
