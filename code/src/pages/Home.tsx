@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import Layout from "../components/Layout";
 import { Link } from "react-router-dom";
 import DarkModeToggler from "../components/DarkModeToggler";
+import { LANDING_PAGE_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE } from "../router/Routes";
 
 const Home = () => {
   const navigation = () => {
@@ -12,17 +13,17 @@ const Home = () => {
             <DarkModeToggler />
           </li>
           <li>
-            <Link to="/" className="hover:underline">
+            <Link to={LANDING_PAGE_ROUTE} className="hover:underline">
               Home
             </Link>
           </li>
           <li>
-            <Link to="/login" className="hover:underline">
+            <Link to={LOGIN_ROUTE} className="hover:underline">
               Login
             </Link>
           </li>
           <li>
-            <Link to="/" className="hover:underline">
+            <Link to={REGISTER_ROUTE} className="hover:underline">
               Register
             </Link>
           </li>
