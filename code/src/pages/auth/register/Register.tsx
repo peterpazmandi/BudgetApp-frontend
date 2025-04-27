@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { RegisterProvider } from "./context/RegsiterContext";
+import { RegisterProvider } from "./context/RegisterContext";
 import Layout from "../../../components/Layout";
 import AuthFrame from "../AuthFrame";
 import H1 from "../../../components/H1";
@@ -14,7 +14,7 @@ const Register = () => {
   const handleLoginButtonClick = () => {
     navigate(LOGIN_ROUTE);
   };
-  
+
   const leftContent = (
     <>
       <H1 text="Welcome!" className="pb-20 text-slate-200" />
@@ -43,6 +43,6 @@ const Register = () => {
       </RegisterProvider>
     </Suspense>
   );
-}
+};
 
-export default Register
+export default Register;

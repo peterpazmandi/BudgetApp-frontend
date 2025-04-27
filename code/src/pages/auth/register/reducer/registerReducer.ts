@@ -1,10 +1,12 @@
+import { RegisterRequestDto } from "../../../../api";
+
 export type RegisterAction =
   | { type: "SET_USERNAME"; payload: string }
   | { type: "SET_EMAIL"; payload: string }
   | { type: "SET_PASSWORD"; payload: string }
   | { type: "SET_FAMILY_NAME"; payload: string }
   | { type: "SET_GIVEN_NAME"; payload: string }
-  | { type: "SET_GENDER"; payload: string };
+  | { type: "SET_GENDER"; payload: RegisterRequestDto.gender };
 
 export type RegisterState = {
   username: string;
@@ -12,7 +14,7 @@ export type RegisterState = {
   password: string;
   familyName: string;
   givenName: string;
-  gender: string;
+  gender: RegisterRequestDto.gender;
   loading: boolean;
   error: string | null;
 };
@@ -23,7 +25,7 @@ export const initialRegisterState: RegisterState = {
   password: "",
   familyName: "",
   givenName: "",
-  gender: "",
+  gender: RegisterRequestDto.gender.MALE,
   loading: false,
   error: null,
 };

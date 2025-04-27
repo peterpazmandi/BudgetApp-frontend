@@ -4,6 +4,8 @@ import {
   registerReducer,
   RegisterState,
 } from "../reducer/registerReducer";
+import { useRegisterMutation } from "../api/use-register-hook";
+import { RegisterRequestDto } from "../../../../api";
 
 export interface RegisterContext {
   state: RegisterState;
@@ -12,7 +14,7 @@ export interface RegisterContext {
   handlePasswordChange: (email: string) => void;
   handleFamilyNameChange: (email: string) => void;
   handleGivenNameChange: (email: string) => void;
-  handleGenderChange: (gender: string) => void;
+  handleGenderChange: (gender: RegisterRequestDto.gender) => void;
   handleRegister: () => void;
 }
 
@@ -22,6 +24,25 @@ export function RegisterProvider(props: {
   children: React.ReactNode;
 }): React.ReactElement {
   const [state, dispatch] = useReducer(registerReducer, initialRegisterState);
+  const registerMutation = useRegisterMutation();
+
+  const handleRegister = () => {
+    registerMutation.mutate(
+      {
+        username: state.username,
+        email: state.email,
+        password: state.password,
+        familyName: state.familyName,
+        givenName: state.givenName,
+        gender: state.gender,
+      },
+      {
+        onSuccess(data) {
+          console.log(data);
+        },
+      }
+    );
+  };
 
   const handleUsernameChange = (username: string) => {
     dispatch({
@@ -58,15 +79,11 @@ export function RegisterProvider(props: {
     });
   };
 
-  const handleGenderChange = (gender: string) => {
+  const handleGenderChange = (gender: RegisterRequestDto.gender) => {
     dispatch({
       type: "SET_GENDER",
       payload: gender,
     });
-  };
-
-  const handleRegister = () => {
-    console.log(state);
   };
 
   return (
@@ -79,7 +96,7 @@ export function RegisterProvider(props: {
         handleFamilyNameChange,
         handleGivenNameChange,
         handleGenderChange,
-        handleRegister
+        handleRegister,
       }}
     >
       {props.children}

@@ -2,12 +2,12 @@ import { RegisterRequestDto } from "../../../../api";
 import ButtonInvert from "../../../../components/ButtonInvert";
 import InputField from "../../../../components/InputField";
 import { RadioGroup } from "../../../../components/RadioGroup";
-import { useRegister } from "../context/RegsiterContext";
+import { useRegister } from "../context/RegisterContext";
 import {
   EnvelopeIcon,
   LockClosedIcon,
   UserIcon,
-  IdentificationIcon
+  IdentificationIcon,
 } from "@heroicons/react/24/outline";
 
 const RegisterForm = () => {
@@ -68,7 +68,7 @@ const RegisterForm = () => {
         label="Family Name"
         value={state.familyName}
         setValue={function (value: string): void {
-            handleFamilyNameChange(value);
+          handleFamilyNameChange(value);
         }}
         icon={<IdentificationIcon />}
       />
@@ -79,7 +79,7 @@ const RegisterForm = () => {
         label="Given Name"
         value={state.givenName}
         setValue={function (value: string): void {
-            handleGivenNameChange(value);
+          handleGivenNameChange(value);
         }}
         icon={<IdentificationIcon />}
       />
@@ -87,7 +87,13 @@ const RegisterForm = () => {
       <RadioGroup
         options={genderOptions}
         value={state.gender}
-        onChange={handleGenderChange}
+        onChange={(value) =>
+          handleGenderChange(
+            RegisterRequestDto.gender[
+              value as keyof typeof RegisterRequestDto.gender
+            ]
+          )
+        }
         name="Gender"
       />
 
