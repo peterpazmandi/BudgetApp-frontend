@@ -1,0 +1,8 @@
+{
+    "auth_login": {
+        "message": "Anmelden"
+    },
+    "auth_register": {
+        "message": "Registrieren"
+    }
+}

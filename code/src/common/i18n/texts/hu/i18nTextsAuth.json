@@ -1,0 +1,8 @@
+{
+    "auth_login": {
+        "message": "Bejelentkezés"
+    },
+    "auth_register": {
+        "message": "Regisztráció"
+    }
+}

@@ -3,6 +3,7 @@ import AppLogo from "../../assets/png/app_logo.png";
 import DarkModeToggler from "../../components/DarkModeToggler";
 import { useNavigate } from "react-router-dom";
 import { LANDING_PAGE_ROUTE } from "../../router/Routes";
+import LanguageSelector from "../../components/LanguageSelector";
 
 interface AuthFrameProps {
   leftContent: JSX.Element;
@@ -42,7 +43,7 @@ const AuthFrame = (props: AuthFrameProps) => {
                 BudgetApp
               </span>
             </div>
-
+            <LanguageSelector />
             <DarkModeToggler />
           </div>
           <div className="flex items-center justify-center h-[100%]">
