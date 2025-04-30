@@ -33,11 +33,11 @@ export default function LanguageSelector() {
     <div className="relative inline-block text-left" ref={menuRef}>
       <button
         onClick={() => setOpen((prev) => !prev)}
-        className="flex items-center gap-2 px-4 py-3 text-sm bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-xl transition-all shadow"
+        className="flex items-center gap-2 px-4 py-2 text-sm color-container hover:bg-gray-200 dark:hover:bg-gray-700 rounded-xl transition-all shadow"
       >
-        <span>{languages.find((l) => l.code === langState)?.flag}</span>
+        <span className="color-text-secondary-invert">{languages.find((l) => l.code === langState)?.flag}</span>
         <svg
-          className="w-4 h-4 ml-1"
+          className="color-text-secondary-invert w-4 h-4 ml-1"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
@@ -48,7 +48,7 @@ export default function LanguageSelector() {
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg z-10">
+        <div className="absolute right-0 mt-2 w-40 color-container border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg z-10">
           <ul className="py-1 text-sm">
             {languages.map((lang) => (
               <li key={lang.code}>
@@ -58,8 +58,8 @@ export default function LanguageSelector() {
                     langState === lang.code ? "font-semibold" : ""
                   }`}
                 >
-                  <span>{lang.flag}</span>
-                  <span>{lang.label}</span>
+                  <span className="color-text-secondary-invert">{lang.flag}</span>
+                  <span className="color-text-secondary-invert">{lang.label}</span>
                   {langState === lang.code && (
                     <svg
                       className="ml-auto w-4 h-4 text-green-500"

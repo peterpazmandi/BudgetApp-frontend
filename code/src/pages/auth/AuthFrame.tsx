@@ -29,14 +29,14 @@ const AuthFrame = (props: AuthFrameProps) => {
                         sm:block 
                         md:block 
                         lg:block 
-                        col-span-2 p-6 color-primary rounded-tl-lg rounded-bl-lg"
+                        col-span-2 p-4 color-primary rounded-tl-lg rounded-bl-lg"
         >
           <div className="flex justify-between">
             <div className="flex items-center cursor-pointer" onClick={handleLogoButtonClick}>
               <img
                 src={AppLogo}
                 alt="Logo"
-                width={40}
+                width={38}
                 className="brightness-0 invert"
               />
               <span className="hidden md:block ps-4 font-bold invert">

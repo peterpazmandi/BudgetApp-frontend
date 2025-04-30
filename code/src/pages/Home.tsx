@@ -3,12 +3,16 @@ import Layout from "../components/Layout";
 import { Link } from "react-router-dom";
 import DarkModeToggler from "../components/DarkModeToggler";
 import { LANDING_PAGE_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE } from "../router/Routes";
+import LanguageSelector from "../components/LanguageSelector";
 
 const Home = () => {
   const navigation = () => {
     return (
       <nav>
         <ul className="flex space-x-4">
+          <li>
+            <LanguageSelector />
+          </li>
           <li>
             <DarkModeToggler />
           </li>
