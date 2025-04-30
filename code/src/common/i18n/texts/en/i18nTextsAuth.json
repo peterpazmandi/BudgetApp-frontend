@@ -4,5 +4,23 @@
     },
     "auth_register": {
         "message": "Register"
+    },
+    "auth_username": {
+        "message": "Username"
+    },
+    "auth_email": {
+        "message": "Email"
+    },
+    "auth_password": {
+        "message": "Password"
+    },
+    "auth_familyname": {
+        "message": "Family Name"
+    },
+    "auth_givenname": {
+        "message": "Given Name"
+    },
+    "auth_gender": {
+        "message": "Gender"
     }
 }

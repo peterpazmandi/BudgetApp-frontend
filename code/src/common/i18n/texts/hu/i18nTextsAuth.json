@@ -4,5 +4,23 @@
     },
     "auth_register": {
         "message": "Regisztráció"
+    },
+    "auth_username": {
+        "message": "Felhasználónév"
+    },
+    "auth_email": {
+        "message": "Email"
+    },
+    "auth_password": {
+        "message": "Jelszó"
+    },
+    "auth_familyname": {
+        "message": "Családnév"
+    },
+    "auth_givenname": {
+        "message": "Keresztnév"
+    },
+    "auth_gender": {
+        "message": "Nem"
     }
 }

@@ -14,7 +14,7 @@ const LoginForm = () => {
       <InputField
         id="email"
         type="text"
-        label="Email"
+        label={translate("auth_email")}
         value={state.email}
         setValue={function (value: string): void {
           handleEmailChange(value);
@@ -25,7 +25,7 @@ const LoginForm = () => {
       <InputField
         id="password"
         type="password"
-        label="Password"
+        label={translate("auth_password")}
         value={state.password}
         setValue={function (value: string): void {
           handlePasswordChange(value);

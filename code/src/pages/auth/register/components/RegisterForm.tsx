@@ -1,4 +1,5 @@
 import { RegisterRequestDto } from "../../../../api";
+import { useTranslation } from "../../../../common/i18n/hooks/useTranslation";
 import ButtonInvert from "../../../../components/ButtonInvert";
 import InputField from "../../../../components/InputField";
 import { RadioGroup } from "../../../../components/RadioGroup";
@@ -11,6 +12,8 @@ import {
 } from "@heroicons/react/24/outline";
 
 const RegisterForm = () => {
+  const translate = useTranslation();
+  
   const {
     state,
     handleUsernameChange,
@@ -32,7 +35,7 @@ const RegisterForm = () => {
       <InputField
         id="username"
         type="text"
-        label="Username"
+        label={translate("auth_username")}
         value={state.username}
         setValue={function (value: string): void {
           handleUsernameChange(value);
@@ -43,7 +46,7 @@ const RegisterForm = () => {
       <InputField
         id="email"
         type="text"
-        label="Email"
+        label={translate("auth_email")}
         value={state.email}
         setValue={function (value: string): void {
           handleEmailChange(value);
@@ -54,7 +57,7 @@ const RegisterForm = () => {
       <InputField
         id="password"
         type="password"
-        label="Password"
+        label={translate("auth_password")}
         value={state.password}
         setValue={function (value: string): void {
           handlePasswordChange(value);
@@ -65,7 +68,7 @@ const RegisterForm = () => {
       <InputField
         id="familyName"
         type="text"
-        label="Family Name"
+        label={translate("auth_familyname")}
         value={state.familyName}
         setValue={function (value: string): void {
           handleFamilyNameChange(value);
@@ -76,7 +79,7 @@ const RegisterForm = () => {
       <InputField
         id="givenName"
         type="text"
-        label="Given Name"
+        label={translate("auth_givenname")}
         value={state.givenName}
         setValue={function (value: string): void {
           handleGivenNameChange(value);
@@ -94,7 +97,7 @@ const RegisterForm = () => {
             ]
           )
         }
-        name="Gender"
+        name={translate("auth_gender")}
       />
 
       <ButtonInvert onClick={handleRegister} className="mt-10">
