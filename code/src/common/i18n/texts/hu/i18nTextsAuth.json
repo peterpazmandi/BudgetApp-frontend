@@ -1,9 +1,36 @@
 {
+    "auth_hello_friend": {
+        "message": "Szia, Barátom!"
+    },
+    "auth_welcome_back": {
+        "message": "Üdv újra itt!"
+    },
+    "auth_welcome": {
+        "message": "Üdvözöllek!"
+    },
+    "auth_create_an_account": {
+        "message": "Hozz létre egy fiókot"
+    },
+    "auth_to_get_started": {
+        "message": "a kezdéshez."
+    },
     "auth_login": {
         "message": "Bejelentkezés"
     },
+    "auth_login_text1": {
+        "message": "Regisztráltál már?"
+    },
+    "auth_login_text2": {
+        "message": "Jelentkezz be személyes adataiddal"
+    },
     "auth_register": {
         "message": "Regisztráció"
+    },
+    "auth_register_text1": {
+        "message": "Add meg személyes adataidat"
+    },
+    "auth_register_text2": {
+        "message": "és kezdd velünk az utazást"
     },
     "auth_username": {
         "message": "Felhasználónév"

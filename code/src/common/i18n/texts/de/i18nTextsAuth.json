@@ -1,9 +1,36 @@
 {
+    "auth_hello_friend": {
+        "message": "Hallo Freund!"
+    },
+    "auth_welcome_back": {
+        "message": "Willkommen zurück!"
+    },
+    "auth_welcome": {
+        "message": "Willkommen!"
+    },
+    "auth_create_an_account": {
+        "message": "Ein Konto erstellen"
+    },
+    "auth_to_get_started": {
+        "message": "um loszulegen."
+    },
     "auth_login": {
         "message": "Anmelden"
     },
+    "auth_login_text1": {
+        "message": "Hast du dich schon registriert?"
+    },
+    "auth_login_text2": {
+        "message": "Melde sich dann mit deinen persönlichen Daten an"
+    },
     "auth_register": {
         "message": "Registrieren"
+    },
+    "auth_register_text1": {
+        "message": "Gib deinen persönlichen Daten ein"
+    },
+    "auth_register_text2": {
+        "message": "und beginn die Reise mit uns"
     },
     "auth_username": {
         "message": "Benutzername"

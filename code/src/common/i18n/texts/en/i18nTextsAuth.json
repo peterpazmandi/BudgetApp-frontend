@@ -1,9 +1,36 @@
 {
+    "auth_hello_friend": {
+        "message": "Hello, Friend!"
+    },
+    "auth_welcome_back": {
+        "message": "Welcome, back!"
+    },
+    "auth_welcome": {
+        "message": "Welcome!"
+    },
+    "auth_create_an_account": {
+        "message": "Create an account"
+    },
+    "auth_to_get_started": {
+        "message": "to get started."
+    },
     "auth_login": {
         "message": "Login"
     },
+    "auth_login_text1": {
+        "message": "Do you have already registered?"
+    },
+    "auth_login_text2": {
+        "message": "Then login with your personal info"
+    },
     "auth_register": {
         "message": "Register"
+    },
+    "auth_register_text1": {
+        "message": "Enter your personal details"
+    },
+    "auth_register_text2": {
+        "message": "and start journey with us"
     },
     "auth_username": {
         "message": "Username"

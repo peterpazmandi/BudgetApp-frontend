@@ -101,7 +101,7 @@ const RegisterForm = () => {
       />
 
       <ButtonInvert onClick={handleRegister} className="mt-10">
-        Register
+        {translate("auth_register")}
       </ButtonInvert>
     </>
   );
