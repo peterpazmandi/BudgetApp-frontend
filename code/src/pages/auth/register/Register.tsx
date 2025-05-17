@@ -1,17 +1,19 @@
 import { Suspense } from "react";
-import { RegisterProvider } from "./context/RegisterContext";
-import Layout from "../../../components/Layout";
-import AuthFrame from "../AuthFrame";
-import H1 from "../../../components/H1";
-import ButtonInvert from "../../../components/ButtonInvert";
 import { useNavigate } from "react-router-dom";
-import { LOGIN_ROUTE } from "../../../router/Routes";
-import RegisterForm from "./components/RegisterForm";
 import { useTranslation } from "../../../common/i18n/hooks/useTranslation";
+import ButtonInvert from "../../../components/ButtonInvert";
+import H1 from "../../../components/H1";
+import Layout from "../../../components/Layout";
+import { LOGIN_ROUTE } from "../../../router/Routes";
+import AuthFrame from "../AuthFrame";
+import AuthProviderSelector from "./components/AuthProviderSelector";
+import RegisterForm from "./components/RegisterForm";
+import { useRegister } from "./context/RegisterContext";
 
 const Register = () => {
   const navigate = useNavigate();
   const translate = useTranslation();
+  const { state } = useRegister();
 
   const handleLoginButtonClick = () => {
     navigate(LOGIN_ROUTE);
@@ -37,18 +39,17 @@ const Register = () => {
         className="color-text-primary"
       />
       <div className="mt-10">
-        <RegisterForm />
+        {state.authProvider === null && <AuthProviderSelector />}
+        {state.authProvider !== null && <RegisterForm />}
       </div>
     </>
   );
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <RegisterProvider>
-        <Layout hideAppBar>
-          <AuthFrame leftContent={leftContent} rightContent={rightContent} />
-        </Layout>
-      </RegisterProvider>
+      <Layout hideAppBar>
+        <AuthFrame leftContent={leftContent} rightContent={rightContent} />
+      </Layout>
     </Suspense>
   );
 };

@@ -1,4 +1,5 @@
 import { RegisterRequestDto } from "../../../../api";
+import { AuthProvider } from "../../../../common/enums/AuthProvider";
 
 export type RegisterAction =
   | { type: "SET_USERNAME"; payload: string }
@@ -6,7 +7,8 @@ export type RegisterAction =
   | { type: "SET_PASSWORD"; payload: string }
   | { type: "SET_FAMILY_NAME"; payload: string }
   | { type: "SET_GIVEN_NAME"; payload: string }
-  | { type: "SET_GENDER"; payload: RegisterRequestDto.gender };
+  | { type: "SET_GENDER"; payload: RegisterRequestDto.gender }
+  | { type: "SET_AUTH_PROVIDER"; payload: AuthProvider | null };
 
 export type RegisterState = {
   username: string;
@@ -15,6 +17,7 @@ export type RegisterState = {
   familyName: string;
   givenName: string;
   gender: RegisterRequestDto.gender;
+  authProvider: AuthProvider | null;
   loading: boolean;
   error: string | null;
 };
@@ -26,6 +29,7 @@ export const initialRegisterState: RegisterState = {
   familyName: "",
   givenName: "",
   gender: RegisterRequestDto.gender.MALE,
+  authProvider: null,
   loading: false,
   error: null,
 };
@@ -47,6 +51,8 @@ export const registerReducer = (
       return { ...state, givenName: action.payload };
     case "SET_GENDER":
       return { ...state, gender: action.payload };
+    case "SET_AUTH_PROVIDER":
+      return { ...state, authProvider: action.payload}
     default:
       return state;
   }
