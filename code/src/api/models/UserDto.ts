@@ -8,9 +8,15 @@ export type UserDto = {
     readonly createdBy?: string;
     readonly modifiedDate?: string;
     readonly modifiedBy?: string;
-    readonly username: string;
     readonly email: string;
     readonly familyName: string;
     readonly givenName: string;
+    readonly gender: UserDto.gender;
 };
+export namespace UserDto {
+    export enum gender {
+        MALE = 'MALE',
+        FEMALE = 'FEMALE',
+    }
+}
 

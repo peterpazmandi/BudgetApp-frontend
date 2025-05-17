@@ -10,7 +10,6 @@ import { useLoading } from "../../../../contexts/LoadingContext";
 
 export interface RegisterContext {
   state: RegisterState;
-  handleUsernameChange: (username: string) => void;
   handleEmailChange: (email: string) => void;
   handlePasswordChange: (email: string) => void;
   handleFamilyNameChange: (email: string) => void;
@@ -35,7 +34,6 @@ export function RegisterProvider(props: {
   const handleRegister = () => {
     registerMutation.mutate(
       {
-        username: state.username,
         email: state.email,
         password: state.password,
         familyName: state.familyName,
@@ -48,13 +46,6 @@ export function RegisterProvider(props: {
         },
       }
     );
-  };
-
-  const handleUsernameChange = (username: string) => {
-    dispatch({
-      type: "SET_USERNAME",
-      payload: username,
-    });
   };
 
   const handleEmailChange = (email: string) => {
@@ -96,7 +87,6 @@ export function RegisterProvider(props: {
     <registerContext.Provider
       value={{
         state,
-        handleUsernameChange,
         handleEmailChange,
         handlePasswordChange,
         handleFamilyNameChange,

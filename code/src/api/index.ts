@@ -9,6 +9,6 @@ export type { OpenAPIConfig } from './core/OpenAPI';
 
 export type { LoginRequestDto } from './models/LoginRequestDto';
 export { RegisterRequestDto } from './models/RegisterRequestDto';
-export type { UserDto } from './models/UserDto';
+export { UserDto } from './models/UserDto';
 
 export { AuthApiService } from './services/AuthApiService';

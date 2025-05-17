@@ -3,7 +3,6 @@
 /* tslint:disable */
 /* eslint-disable */
 export type RegisterRequestDto = {
-    username: string;
     email: string;
     password: string;
     familyName?: string;

@@ -7,16 +7,14 @@ import { useRegister } from "../context/RegisterContext";
 import {
   EnvelopeIcon,
   LockClosedIcon,
-  UserIcon,
   IdentificationIcon,
 } from "@heroicons/react/24/outline";
 
 const RegisterForm = () => {
   const translate = useTranslation();
-  
+
   const {
     state,
-    handleUsernameChange,
     handleEmailChange,
     handlePasswordChange,
     handleFamilyNameChange,
@@ -32,17 +30,6 @@ const RegisterForm = () => {
 
   return (
     <>
-      <InputField
-        id="username"
-        type="text"
-        label={translate("auth_username")}
-        value={state.username}
-        setValue={function (value: string): void {
-          handleUsernameChange(value);
-        }}
-        icon={<UserIcon />}
-      />
-
       <InputField
         id="email"
         type="text"
