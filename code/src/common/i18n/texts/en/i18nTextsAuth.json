@@ -32,9 +32,6 @@
     "auth_register_text2": {
         "message": "and start journey with us"
     },
-    "auth_username": {
-        "message": "Username"
-    },
     "auth_email": {
         "message": "Email"
     },

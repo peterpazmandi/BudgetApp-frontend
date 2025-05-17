@@ -12,7 +12,6 @@ export default interface I18nTextsAuth {
     auth_register: WebExtensionMessage;
     auth_register_text1: WebExtensionMessage;
     auth_register_text2: WebExtensionMessage;
-    auth_username: WebExtensionMessage;
     auth_email: WebExtensionMessage;
     auth_password: WebExtensionMessage;
     auth_familyname: WebExtensionMessage;

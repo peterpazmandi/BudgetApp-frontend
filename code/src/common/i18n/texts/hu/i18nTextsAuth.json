@@ -32,9 +32,6 @@
     "auth_register_text2": {
         "message": "és kezdd velünk az utazást"
     },
-    "auth_username": {
-        "message": "Felhasználónév"
-    },
     "auth_email": {
         "message": "Email"
     },
