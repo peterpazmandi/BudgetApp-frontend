@@ -9,6 +9,10 @@ import { RegisterRequestDto } from "../../../../api";
 import { useLoading } from "../../../../contexts/LoadingContext";
 import { useValidator } from "../../../../hooks/useValidator";
 import { AuthProvider } from "../../../../common/enums/AuthProvider";
+import { useNotification } from "../../../../hooks/useNotification";
+import { useTranslation } from "../../../../common/i18n/hooks/useTranslation";
+import { useNavigate } from "react-router-dom";
+import { LOGIN_ROUTE } from "../../../../router/Routes";
 
 export interface RegisterContext {
   state: RegisterState;
@@ -31,6 +35,9 @@ export function RegisterProvider(props: {
   const registerMutation = useRegisterMutation();
   const { setIsLoading } = useLoading();
   const { validateEmail } = useValidator();
+  const translate = useTranslation();
+  const { showSuccess } = useNotification();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(registerMutation.isPending);
@@ -46,8 +53,9 @@ export function RegisterProvider(props: {
         gender: state.gender,
       },
       {
-        onSuccess(data) {
-          console.log(data);
+        onSuccess() {
+          showSuccess(translate("registration_success"));
+          navigate(LOGIN_ROUTE);
         },
       }
     );
@@ -56,9 +64,9 @@ export function RegisterProvider(props: {
   const handleAuthProviderChange = (authProvider: AuthProvider | null) => {
     dispatch({
       type: "SET_AUTH_PROVIDER",
-      payload: authProvider
-    })
-  }
+      payload: authProvider,
+    });
+  };
 
   const handleEmailChange = (email: string) => {
     dispatch({
@@ -108,7 +116,7 @@ export function RegisterProvider(props: {
         handleGivenNameChange,
         handleGenderChange,
         handleRegister,
-        isEmailValid
+        isEmailValid,
       }}
     >
       {props.children}

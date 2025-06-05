@@ -17,4 +17,6 @@ export default interface I18nTextsAuth {
     auth_familyname: WebExtensionMessage;
     auth_givenname: WebExtensionMessage;
     auth_gender: WebExtensionMessage;
+    login_success: WebExtensionMessage;
+    registration_success: WebExtensionMessage;
 }
