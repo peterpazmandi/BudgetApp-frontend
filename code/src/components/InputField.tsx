@@ -1,22 +1,34 @@
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 interface InputFieldProps {
   id: string;
   value: string;
   setValue: (value: string) => void;
+  onActionClick?: () => void;
   type: string;
   label: string;
   icon?: React.ReactNode;
+  isValueValid?: boolean;
 }
 
 const InputField = (props: InputFieldProps) => {
+  
   return (
-    <div className="relative rounded-full color-input-primary mt-4 mb-4
+    <div
+      className="relative rounded-full color-input-primary mt-4 mb-4
                     w-full
                     sm:w-80
-                    lg:w-100">
-      {/* Icon */}
-      <div className="absolute w-5 left-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:invert dark:brightness-0" >
+                    lg:w-100"
+    >
+      {/* Left Icon */}
+      <div className="absolute w-5 left-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:invert dark:brightness-0">
         {props.icon}
+      </div>
+
+      {/* Right Icon */}
+      <div
+        id={`${props.id}_rightIcon`} className={`absolute w-5 right-3 top-1/2 transform -translate-y-1/2 ${props.isValueValid ? "text-white hover:text-emerald-600 hover:scale-125 hover:cursor-pointer" : "text-gray-500"}`}>
+        {props.onActionClick && <ArrowRightIcon />}
       </div>
 
       {/* Input Field */}

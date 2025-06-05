@@ -7,6 +7,7 @@ import {
 import { useRegisterMutation } from "../api/use-register-hook";
 import { RegisterRequestDto } from "../../../../api";
 import { useLoading } from "../../../../contexts/LoadingContext";
+import { useValidator } from "../../../../hooks/useValidator";
 
 export interface RegisterContext {
   state: RegisterState;
@@ -16,6 +17,7 @@ export interface RegisterContext {
   handleGivenNameChange: (email: string) => void;
   handleGenderChange: (gender: RegisterRequestDto.gender) => void;
   handleRegister: () => void;
+  isEmailValid: boolean;
 }
 
 const registerContext = createContext<RegisterContext | null>(null);
@@ -26,6 +28,7 @@ export function RegisterProvider(props: {
   const [state, dispatch] = useReducer(registerReducer, initialRegisterState);
   const registerMutation = useRegisterMutation();
   const { setIsLoading } = useLoading();
+  const { validateEmail } = useValidator();
 
   useEffect(() => {
     setIsLoading(registerMutation.isPending);
@@ -83,6 +86,8 @@ export function RegisterProvider(props: {
     });
   };
 
+  const isEmailValid = validateEmail(state.email);
+
   return (
     <registerContext.Provider
       value={{
@@ -93,6 +98,7 @@ export function RegisterProvider(props: {
         handleGivenNameChange,
         handleGenderChange,
         handleRegister,
+        isEmailValid
       }}
     >
       {props.children}

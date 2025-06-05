@@ -8,7 +8,7 @@ import GoogleButton from "../../../../components/button/GoogleButton";
 
 const AuthProviderSelector = () => {
   const translate = useTranslation();
-  const { state, handleEmailChange } = useRegisterContext();
+  const { state, handleEmailChange, isEmailValid } = useRegisterContext();
 
   return (
     <>
@@ -21,6 +21,10 @@ const AuthProviderSelector = () => {
           handleEmailChange(value);
         }}
         icon={<EnvelopeIcon />}
+        onActionClick={function (): void {
+          console.log("value")
+        }}
+        isValueValid={isEmailValid}
       />
       <div className="mt-10 mb-10">
         <DividerWithText text={translate("or")} />

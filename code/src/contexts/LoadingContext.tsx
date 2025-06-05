@@ -19,7 +19,7 @@ export const LoadingProvider = (props: Readonly<{ children: ReactNode}>) => {
 
     useEffect(() => {
         if(isFetching > 0) {
-            setIsLoading(true);
+            // setIsLoading(true);
         } else {
             setIsLoading(false);
         }
