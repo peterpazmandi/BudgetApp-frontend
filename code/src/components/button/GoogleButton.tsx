@@ -1,9 +1,17 @@
+import { OpenAPI } from "../../api";
+
 const GoogleButton = () => {
+
+  const handleClick = () => {
+    window.location.href = `${OpenAPI.BASE}/oauth2/authorization/google`;
+  }
+  
   return (
     <button
       type="button"
       data-twe-ripple-init
       data-twe-ripple-color="light"
+      onClick={handleClick}
       className="cursor-pointer mb-2 inline-block rounded bg-[#ea4335] px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg hover:bg-[#ea44359a] focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
     >
       <span className="[&>svg]:h-4 [&>svg]:w-4">
