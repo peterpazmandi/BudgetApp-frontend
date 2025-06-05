@@ -8,12 +8,12 @@ import { LOGIN_ROUTE } from "../../../router/Routes";
 import AuthFrame from "../AuthFrame";
 import AuthProviderSelector from "./components/AuthProviderSelector";
 import RegisterForm from "./components/RegisterForm";
-import { useRegister } from "./context/RegisterContext";
+import { useRegisterContext } from "./context/RegisterContext";
 
 const Register = () => {
   const navigate = useNavigate();
   const translate = useTranslation();
-  const { state } = useRegister();
+  const { state } = useRegisterContext();
 
   const handleLoginButtonClick = () => {
     navigate(LOGIN_ROUTE);

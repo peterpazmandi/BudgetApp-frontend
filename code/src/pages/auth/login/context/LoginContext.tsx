@@ -24,7 +24,7 @@ export function LoginProvider(props: {
 }): React.ReactElement {
   const [state, dispatch] = useReducer(loginReducer, initialLoginState);
   const loginMutation = useLoginMutation();
-  const {setIsLoading} = useLoading();
+  const { setIsLoading } = useLoading();
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
@@ -77,7 +77,7 @@ export function LoginProvider(props: {
   );
 }
 
-export const useLogin = () => {
+export const useLoginContext = () => {
   const context = useContext(loginContext);
   if (!context) {
     throw new Error("useLogin must be used within a LoginProvider");

@@ -3,7 +3,7 @@ import { useTranslation } from "../../../../common/i18n/hooks/useTranslation";
 import ButtonInvert from "../../../../components/ButtonInvert";
 import InputField from "../../../../components/InputField";
 import { RadioGroup } from "../../../../components/RadioGroup";
-import { useRegister } from "../context/RegisterContext";
+import { useRegisterContext } from "../context/RegisterContext";
 import {
   EnvelopeIcon,
   LockClosedIcon,
@@ -21,7 +21,7 @@ const RegisterForm = () => {
     handleGivenNameChange,
     handleGenderChange,
     handleRegister,
-  } = useRegister();
+  } = useRegisterContext();
 
   const genderOptions = [
     { label: "Male", value: RegisterRequestDto.gender.MALE },

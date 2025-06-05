@@ -1,12 +1,14 @@
 import { useTranslation } from "../../../../common/i18n/hooks/useTranslation";
 import DividerWithText from "../../../../components/DividerWithText";
 import InputField from "../../../../components/InputField";
-import { useRegister } from "../context/RegisterContext";
+import { useRegisterContext } from "../context/RegisterContext";
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
+import FaceBookButton from "../../../../components/button/FaceBookButton";
+import GoogleButton from "../../../../components/button/GoogleButton";
 
 const AuthProviderSelector = () => {
   const translate = useTranslation();
-  const { state, handleEmailChange } = useRegister();
+  const { state, handleEmailChange } = useRegisterContext();
 
   return (
     <>
@@ -20,7 +22,17 @@ const AuthProviderSelector = () => {
         }}
         icon={<EnvelopeIcon />}
       />
-      <DividerWithText text={translate("or")} />
+      <div className="mt-10 mb-10">
+        <DividerWithText text={translate("or")} />
+      </div>
+      <div className="grid grid-cols-2 gap-20 mt-10">
+        <div className="flex justify-end">
+          <FaceBookButton />
+        </div>
+        <div className="flex justify-start">
+          <GoogleButton />
+        </div>
+      </div>
     </>
   );
 };

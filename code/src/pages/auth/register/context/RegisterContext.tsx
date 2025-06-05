@@ -100,7 +100,7 @@ export function RegisterProvider(props: {
   );
 }
 
-export const useRegister = () => {
+export const useRegisterContext = () => {
   const context = useContext(registerContext);
   if (!context) {
     throw new Error("useRegister must be used within a RegisterProvider");
