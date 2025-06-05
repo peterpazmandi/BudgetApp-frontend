@@ -5,10 +5,11 @@ import { useRegisterContext } from "../context/RegisterContext";
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
 import FaceBookButton from "../../../../components/button/FaceBookButton";
 import GoogleButton from "../../../../components/button/GoogleButton";
+import { AuthProvider } from "../../../../common/enums/AuthProvider";
 
 const AuthProviderSelector = () => {
   const translate = useTranslation();
-  const { state, handleEmailChange, isEmailValid } = useRegisterContext();
+  const { state, handleAuthProviderChange, handleEmailChange, isEmailValid } = useRegisterContext();
 
   return (
     <>
@@ -22,7 +23,7 @@ const AuthProviderSelector = () => {
         }}
         icon={<EnvelopeIcon />}
         onActionClick={function (): void {
-          console.log("value")
+          handleAuthProviderChange(AuthProvider.EMAIL)
         }}
         isValueValid={isEmailValid}
       />

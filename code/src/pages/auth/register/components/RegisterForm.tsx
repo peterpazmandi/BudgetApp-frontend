@@ -9,12 +9,14 @@ import {
   LockClosedIcon,
   IdentificationIcon,
 } from "@heroicons/react/24/outline";
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 const RegisterForm = () => {
   const translate = useTranslation();
 
   const {
     state,
+    handleAuthProviderChange,
     handleEmailChange,
     handlePasswordChange,
     handleFamilyNameChange,
@@ -86,10 +88,17 @@ const RegisterForm = () => {
         }
         name={translate("auth_gender")}
       />
-
-      <ButtonInvert onClick={handleRegister} className="mt-10">
-        {translate("auth_register")}
-      </ButtonInvert>
+      <div className="flex items-center justify-between cursor-pointer">
+        <div className="group flex items-center" onClick={() => handleAuthProviderChange(null)}>
+          <ArrowLeftIcon
+            className={`w-5 mt-10 text-black dark:text-white group-hover:text-emerald-600 group-hover:scale-125 hover:cursor-pointer`}
+          />
+          <p className="color-text-primary group-hover:text-emerald-600 mt-10 ms-2">{translate("back")}</p>
+        </div>
+        <ButtonInvert onClick={handleRegister} className="mt-10">
+          {translate("auth_register")}
+        </ButtonInvert>
+      </div>
     </>
   );
 };

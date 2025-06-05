@@ -1,5 +1,8 @@
 {
     "or": {
-        "message": "vagy"
+        "message": "Vagy"
+    },
+    "back": {
+        "message": "Vissza"
     }
 }

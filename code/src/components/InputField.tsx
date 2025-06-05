@@ -12,7 +12,6 @@ interface InputFieldProps {
 }
 
 const InputField = (props: InputFieldProps) => {
-  
   return (
     <div
       className="relative rounded-full color-input-primary mt-4 mb-4
@@ -27,8 +26,18 @@ const InputField = (props: InputFieldProps) => {
 
       {/* Right Icon */}
       <div
-        id={`${props.id}_rightIcon`} className={`absolute w-5 right-3 top-1/2 transform -translate-y-1/2 ${props.isValueValid ? "text-white hover:text-emerald-600 hover:scale-125 hover:cursor-pointer" : "text-gray-500"}`}>
-        {props.onActionClick && <ArrowRightIcon />}
+        id={`${props.id}_rightIcon`}
+        className={`absolute w-5 right-3 top-1/2 transform -translate-y-1/2 ${
+          props.isValueValid
+            ? "text-black dark:text-white hover:text-emerald-600 hover:scale-125 hover:cursor-pointer"
+            : "text-gray-500"
+        }`}
+      >
+        {props.onActionClick && (
+          <ArrowRightIcon
+            onClick={props.isValueValid ? props.onActionClick : () => {}}
+          />
+        )}
       </div>
 
       {/* Input Field */}

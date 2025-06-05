@@ -8,9 +8,11 @@ import { useRegisterMutation } from "../api/use-register-hook";
 import { RegisterRequestDto } from "../../../../api";
 import { useLoading } from "../../../../contexts/LoadingContext";
 import { useValidator } from "../../../../hooks/useValidator";
+import { AuthProvider } from "../../../../common/enums/AuthProvider";
 
 export interface RegisterContext {
   state: RegisterState;
+  handleAuthProviderChange: (authProvider: AuthProvider | null) => void;
   handleEmailChange: (email: string) => void;
   handlePasswordChange: (email: string) => void;
   handleFamilyNameChange: (email: string) => void;
@@ -50,6 +52,13 @@ export function RegisterProvider(props: {
       }
     );
   };
+
+  const handleAuthProviderChange = (authProvider: AuthProvider | null) => {
+    dispatch({
+      type: "SET_AUTH_PROVIDER",
+      payload: authProvider
+    })
+  }
 
   const handleEmailChange = (email: string) => {
     dispatch({
@@ -92,6 +101,7 @@ export function RegisterProvider(props: {
     <registerContext.Provider
       value={{
         state,
+        handleAuthProviderChange,
         handleEmailChange,
         handlePasswordChange,
         handleFamilyNameChange,

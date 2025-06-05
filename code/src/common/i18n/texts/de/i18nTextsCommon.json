@@ -1,5 +1,8 @@
 {
     "or": {
-        "message": "oder"
+        "message": "Oder"
+    },
+    "back": {
+        "message": "Zurück"
     }
 }
