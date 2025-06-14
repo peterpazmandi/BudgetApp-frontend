@@ -46,5 +46,11 @@
     },
     "auth_gender": {
         "message": "Gender"
+    },
+    "login_success": {
+        "message": "You have successfully logged in, we will redirect you shortly."
+    },
+    "registration_success": {
+        "message": "You've successfully created your account. Log in now to get started!"
     }
 }

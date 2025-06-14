@@ -12,3 +12,4 @@ export { RegisterRequestDto } from './models/RegisterRequestDto';
 export { UserDto } from './models/UserDto';
 
 export { AuthApiService } from './services/AuthApiService';
+export { UserApiService } from './services/UserApiService';

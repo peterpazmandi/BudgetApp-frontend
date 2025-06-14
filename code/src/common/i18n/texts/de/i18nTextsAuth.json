@@ -46,5 +46,11 @@
     },
     "auth_gender": {
         "message": "Geschlecht"
+    },
+    "login_success": {
+        "message": "Du haas dein Konto erfolgreich erstellt. Melde dich jetzt an, um loszulegen!"
+    },
+    "registration_success": {
+        "message": "Du haas dein Konto erfolgreich erstellt. Melde dich jetzt an, um loszulegen!"
     }
 }

@@ -8,6 +8,10 @@ import {
 import { LoginRequestDto } from "../../../../api";
 import { useSnackbar } from "notistack";
 import { useLoading } from "../../../../contexts/LoadingContext";
+import { useNotification } from "../../../../hooks/useNotification";
+import { useTranslation } from "../../../../common/i18n/hooks/useTranslation";
+import { useNavigate } from "react-router-dom";
+import { OVERVIEW_ROUTE } from "../../../../router/Routes";
 
 export interface LoginContext {
   state: LoginState;
@@ -24,8 +28,10 @@ export function LoginProvider(props: {
 }): React.ReactElement {
   const [state, dispatch] = useReducer(loginReducer, initialLoginState);
   const loginMutation = useLoginMutation();
-  const {setIsLoading} = useLoading();
-  const { enqueueSnackbar } = useSnackbar();
+  const { setIsLoading } = useLoading();
+  const { showSuccess } = useNotification();
+  const translate = useTranslation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(loginMutation.isPending);
@@ -39,10 +45,8 @@ export function LoginProvider(props: {
       } as LoginRequestDto,
       {
         onSuccess: () => {
-          enqueueSnackbar(
-            "You have successfully logged in, we will redirect you in a moment.",
-            { variant: "success" }
-          );
+          showSuccess(translate("login_success"));
+          navigate(OVERVIEW_ROUTE)
         },
       }
     );
@@ -77,7 +81,7 @@ export function LoginProvider(props: {
   );
 }
 
-export const useLogin = () => {
+export const useLoginContext = () => {
   const context = useContext(loginContext);
   if (!context) {
     throw new Error("useLogin must be used within a LoginProvider");

@@ -1,0 +1,5 @@
+{
+    "not_logged_in_error": {
+        "message": "This page is only available to logged in users!"
+    }
+}

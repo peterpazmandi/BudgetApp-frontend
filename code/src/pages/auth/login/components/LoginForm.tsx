@@ -1,13 +1,13 @@
 import { EnvelopeIcon, LockClosedIcon } from "@heroicons/react/24/outline";
 import ButtonInvert from "../../../../components/ButtonInvert";
 import InputField from "../../../../components/InputField";
-import { useLogin } from "../context/LoginContext";
+import { useLoginContext } from "../context/LoginContext";
 import { useTranslation } from "../../../../common/i18n/hooks/useTranslation";
 
 const LoginForm = () => {
   const translate = useTranslation();
   const { state, handleEmailChange, handlePasswordChange, handleLogin } =
-    useLogin();
+    useLoginContext();
 
   return (
     <>

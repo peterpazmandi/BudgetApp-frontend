@@ -46,5 +46,11 @@
     },
     "auth_gender": {
         "message": "Nem"
+    },
+    "login_success": {
+        "message": "Sikeresen bejelentkeztél, hamarosan átirányítunk."
+    },
+    "registration_success": {
+        "message": "Sikeresen létrehoztad fiókod. Jelentkezz be most a kezdéshez!"
     }
 }

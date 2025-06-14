@@ -8,12 +8,13 @@ import { LOGIN_ROUTE } from "../../../router/Routes";
 import AuthFrame from "../AuthFrame";
 import AuthProviderSelector from "./components/AuthProviderSelector";
 import RegisterForm from "./components/RegisterForm";
-import { useRegister } from "./context/RegisterContext";
+import { useRegisterContext } from "./context/RegisterContext";
+import { AuthProvider } from "../../../common/enums/AuthProvider";
 
 const Register = () => {
   const navigate = useNavigate();
   const translate = useTranslation();
-  const { state } = useRegister();
+  const { state } = useRegisterContext();
 
   const handleLoginButtonClick = () => {
     navigate(LOGIN_ROUTE);
@@ -30,17 +31,22 @@ const Register = () => {
 
   const rightContent = (
     <>
-      <H1
-        text={translate("auth_create_an_account")}
-        className="color-text-primary"
-      />
-      <H1
-        text={translate("auth_to_get_started")}
-        className="color-text-primary"
-      />
+      {state.authProvider === null && (
+        <>
+          <H1
+            text={translate("auth_create_an_account")}
+            className="color-text-primary"
+          />
+          <H1
+            text={translate("auth_to_get_started")}
+            className="color-text-primary"
+          />
+        </>
+      )}
+
       <div className="mt-10">
         {state.authProvider === null && <AuthProviderSelector />}
-        {state.authProvider !== null && <RegisterForm />}
+        {state.authProvider === AuthProvider.EMAIL && <RegisterForm />}
       </div>
     </>
   );

@@ -7,6 +7,7 @@ import ReactQueryProvider from "./providers/ReactQueryProvider";
 import BudgetAppRoutes from "./router/BudgetAppRoutes";
 import { LoadingProvider } from "./contexts/LoadingContext";
 import { TranslationProvider } from "./common/i18n/context/TranslationContext";
+import { UserProvider } from "./contexts/UserContext";
 
 function App() {
   return (
@@ -20,11 +21,13 @@ function App() {
                 horizontal: "right",
               }}
             >
-              <BrowserRouter>
-                <Suspense fallback={<FullPageSpinner />}>
-                  <BudgetAppRoutes />
-                </Suspense>
-              </BrowserRouter>
+              <UserProvider>
+                <BrowserRouter>
+                  <Suspense fallback={<FullPageSpinner />}>
+                    <BudgetAppRoutes />
+                  </Suspense>
+                </BrowserRouter>
+              </UserProvider>
             </SnackbarProvider>
           </LoadingProvider>
         </TranslationProvider>

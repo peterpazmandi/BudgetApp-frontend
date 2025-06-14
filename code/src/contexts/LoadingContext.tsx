@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { useIsFetching } from "@tanstack/react-query";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
 interface LoadingContext {
     isLoading: boolean;
@@ -14,6 +15,15 @@ const loadingContext = createContext<LoadingContext>(initState);
 
 export const LoadingProvider = (props: Readonly<{ children: ReactNode}>) => {
     const [isLoading, setIsLoading] = useState(false);
+    const isFetching = useIsFetching();
+
+    useEffect(() => {
+        if(isFetching > 0) {
+            // setIsLoading(true);
+        } else {
+            setIsLoading(false);
+        }
+    }, [isFetching]);
 
     return (
         <loadingContext.Provider value={{ isLoading, setIsLoading}}>

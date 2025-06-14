@@ -34,3 +34,18 @@
     @apply bg-slate-50 dark:bg-slate-800
   }
 }
+
+/* Light mode autofill */
+input:-webkit-autofill {
+  @apply bg-slate-50 text-slate-800;
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+  -webkit-text-fill-color: black !important;
+  transition: background-color 9999s ease-out;
+}
+
+/* Dark mode autofill */
+.dark input:-webkit-autofill {
+  @apply bg-slate-800 text-slate-200;
+  -webkit-box-shadow: 0 0 0 1000px #1d293d inset; /* Tailwind's gray-900 */
+  -webkit-text-fill-color: white !important;
+}
