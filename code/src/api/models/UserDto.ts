@@ -12,6 +12,7 @@ export type UserDto = {
     readonly familyName: string;
     readonly givenName: string;
     readonly gender: UserDto.gender;
+    readonly emailVerified: boolean;
 };
 export namespace UserDto {
     export enum gender {

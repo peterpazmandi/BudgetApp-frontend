@@ -29,7 +29,7 @@ export const initialRegisterState: RegisterState = {
   familyName: "",
   givenName: "",
   gender: RegisterRequestDto.gender.MALE,
-  authProvider: AuthProvider.EMAIL,
+  authProvider: null,
   loading: false,
   error: null,
 };

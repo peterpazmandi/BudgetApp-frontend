@@ -36,7 +36,7 @@ export function RegisterProvider(props: {
   const { setIsLoading } = useLoading();
   const { validateEmail } = useValidator();
   const translate = useTranslation();
-  const { showSuccess } = useNotification();
+  const { showSuccess, showError } = useNotification();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -57,6 +57,9 @@ export function RegisterProvider(props: {
           showSuccess(translate("registration_success"));
           navigate(LOGIN_ROUTE);
         },
+        onError(error: any) {
+          showError(error.body.detail);
+        }
       }
     );
   };
