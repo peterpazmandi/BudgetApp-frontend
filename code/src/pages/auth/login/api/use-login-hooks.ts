@@ -1,7 +1,8 @@
 import { QueryKey, useMutation, useQueryClient } from "@tanstack/react-query";
 import { AuthApiService, LoginRequestDto } from "../../../../api";
+import { QueryKeys } from "../../../../common/enums/QueryKeys";
 
-const queryKey: QueryKey = ["user"];
+const queryKey: QueryKey = [QueryKeys.LOGIN];
 
 export function useLoginMutation() {
   const queryClient = useQueryClient();
