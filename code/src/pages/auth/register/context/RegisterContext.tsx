@@ -7,9 +7,9 @@ import {
 import { useRegisterMutation } from "../api/use-register-hook";
 import { RegisterRequestDto } from "../../../../api";
 import { useLoading } from "../../../../contexts/LoadingContext";
-import { useValidator } from "../../../../hooks/useValidator";
+import { useValidator } from "../../../../common/hooks/useValidator";
 import { AuthProvider } from "../../../../common/enums/AuthProvider";
-import { useNotification } from "../../../../hooks/useNotification";
+import { useNotification } from "../../../../common/hooks/useNotification";
 import { useTranslation } from "../../../../common/i18n/hooks/useTranslation";
 import { useNavigate } from "react-router-dom";
 import { LOGIN_ROUTE } from "../../../../router/Routes";
@@ -59,7 +59,7 @@ export function RegisterProvider(props: {
         },
         onError(error: any) {
           showError(error.body.detail);
-        }
+        },
       }
     );
   };

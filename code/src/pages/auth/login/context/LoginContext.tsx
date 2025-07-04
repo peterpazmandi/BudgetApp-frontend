@@ -8,7 +8,7 @@ import {
 import { LoginRequestDto } from "../../../../api";
 import { useSnackbar } from "notistack";
 import { useLoading } from "../../../../contexts/LoadingContext";
-import { useNotification } from "../../../../hooks/useNotification";
+import { useNotification } from "../../../../common/hooks/useNotification";
 import { useTranslation } from "../../../../common/i18n/hooks/useTranslation";
 import { useNavigate } from "react-router-dom";
 import { OVERVIEW_ROUTE } from "../../../../router/Routes";
@@ -46,7 +46,7 @@ export function LoginProvider(props: {
       {
         onSuccess: () => {
           showSuccess(translate("login_success"));
-          navigate(OVERVIEW_ROUTE)
+          navigate(OVERVIEW_ROUTE);
         },
       }
     );

@@ -1,12 +1,12 @@
 import { useIsFetching } from "@tanstack/react-query";
 import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
+    createContext,
+    ReactNode,
+    useContext,
+    useEffect,
+    useState,
 } from "react";
-import { QueryKeys } from "../common/enums/QueryKeys";
+import { useLocation } from "react-router-dom";
 
 interface LoadingContext {
   isLoading: boolean;
@@ -21,15 +21,17 @@ const initState: LoadingContext = {
 const loadingContext = createContext<LoadingContext>(initState);
 
 export const LoadingProvider = (props: Readonly<{ children: ReactNode }>) => {
+  const location = useLocation();
+  const shouldntShowLoadingSpinner =
+    location.pathname !== "/" &&
+    location.pathname !== "/login" &&
+    location.pathname !== "/register";
   const [isLoading, setIsLoading] = useState(false);
 
-  const queryKeys = Object.values(QueryKeys).filter(
-    (key) => key !== QueryKeys.USER
-  );
-  const isFetching = useIsFetching({ queryKey: queryKeys });
+  const isFetching = useIsFetching();
 
   useEffect(() => {
-    if (isFetching > 0) {
+    if (isFetching > 0 && shouldntShowLoadingSpinner) {
       setIsLoading(true);
     } else {
       setIsLoading(false);

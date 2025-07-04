@@ -11,28 +11,28 @@ import { UserProvider } from "./contexts/UserContext";
 
 function App() {
   return (
-    <ReactQueryProvider>
-      <ThemeProvider>
-        <TranslationProvider>
-          <LoadingProvider>
-            <SnackbarProvider
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "right",
-              }}
-            >
-              <UserProvider>
-                <BrowserRouter>
+    <SnackbarProvider
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "right",
+      }}
+    >
+      <ReactQueryProvider>
+        <ThemeProvider>
+          <TranslationProvider>
+            <UserProvider>
+              <BrowserRouter>
+                <LoadingProvider>
                   <Suspense fallback={<FullPageSpinner />}>
                     <BudgetAppRoutes />
                   </Suspense>
-                </BrowserRouter>
-              </UserProvider>
-            </SnackbarProvider>
-          </LoadingProvider>
-        </TranslationProvider>
-      </ThemeProvider>
-    </ReactQueryProvider>
+                </LoadingProvider>
+              </BrowserRouter>
+            </UserProvider>
+          </TranslationProvider>
+        </ThemeProvider>
+      </ReactQueryProvider>
+    </SnackbarProvider>
   );
 }
 

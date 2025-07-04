@@ -3,7 +3,7 @@ import { useUserContext } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import { LANDING_PAGE_ROUTE } from "../router/Routes";
 import { useTranslation } from "../common/i18n/hooks/useTranslation";
-import { useNotification } from "../hooks/useNotification";
+import { useNotification } from "../common/hooks/useNotification";
 
 interface ProtectedRouteProps {
   element: React.ReactElement;
