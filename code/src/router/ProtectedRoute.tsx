@@ -10,17 +10,17 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute = (props: Readonly<ProtectedRouteProps>) => {
-  const { user, isFirstUserFetchHappend } = useUserContext();
+  const { user, isFetching, isLoading } = useUserContext();
   const navigate = useNavigate();
   const translate = useTranslation();
   const { showError } = useNotification();
-
+console.log(isFetching)
   useEffect(() => {
-    if (!user && isFirstUserFetchHappend) {
+    if (!user && !isFetching && !isLoading) {
       showError(translate("not_logged_in_error"));
       navigate(LANDING_PAGE_ROUTE);
     }
-  }, [user, isFirstUserFetchHappend, showError, translate, navigate]);
+  }, [user, isFetching, showError, translate, navigate]);
 
   return props.element;
 };

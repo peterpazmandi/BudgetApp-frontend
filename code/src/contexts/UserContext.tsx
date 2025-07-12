@@ -4,7 +4,8 @@ import { useUserQuery } from "./api/use-user-hooks";
 
 interface UserContext {
   user: UserDto | undefined;
-  isFirstUserFetchHappend: boolean;
+  isFetching: boolean;
+  isLoading: boolean;
 }
 
 const userContext = createContext<UserContext | null>(null);
@@ -13,10 +14,10 @@ export function UserProvider(props: {
   children: React.ReactNode;
 }): React.ReactElement {
   
-  const { data: user, isFetched: isFirstUserFetchHappend } = useUserQuery();
+  const { data: user, isFetching, isLoading } = useUserQuery();
 
   return (
-    <userContext.Provider value={{ user, isFirstUserFetchHappend }}>
+    <userContext.Provider value={{ user, isFetching, isLoading }}>
       {props.children}
     </userContext.Provider>
   );
