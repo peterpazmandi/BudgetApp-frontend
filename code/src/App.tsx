@@ -17,21 +17,21 @@ function App() {
         horizontal: "right",
       }}
     >
-      <ReactQueryProvider>
-        <ThemeProvider>
-          <TranslationProvider>
-            <UserProvider>
-              <BrowserRouter>
+      <BrowserRouter>
+        <ReactQueryProvider>
+          <ThemeProvider>
+            <TranslationProvider>
+              <UserProvider>
                 <LoadingProvider>
                   <Suspense fallback={<FullPageSpinner />}>
                     <BudgetAppRoutes />
                   </Suspense>
                 </LoadingProvider>
-              </BrowserRouter>
-            </UserProvider>
-          </TranslationProvider>
-        </ThemeProvider>
-      </ReactQueryProvider>
+              </UserProvider>
+            </TranslationProvider>
+          </ThemeProvider>
+        </ReactQueryProvider>
+      </BrowserRouter>
     </SnackbarProvider>
   );
 }

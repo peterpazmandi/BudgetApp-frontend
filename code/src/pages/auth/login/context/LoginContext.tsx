@@ -1,17 +1,16 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
+import { useNavigate } from "react-router-dom";
+import { LoginRequestDto } from "../../../../api";
+import { useNotification } from "../../../../common/hooks/useNotification";
+import { useTranslation } from "../../../../common/i18n/hooks/useTranslation";
+import { useLoading } from "../../../../contexts/LoadingContext";
+import { OVERVIEW_ROUTE } from "../../../../router/Routes";
 import { useLoginMutation } from "../api/use-login-hooks";
 import {
   initialLoginState,
   loginReducer,
   LoginState,
 } from "../reducer/loginReducer";
-import { LoginRequestDto } from "../../../../api";
-import { useSnackbar } from "notistack";
-import { useLoading } from "../../../../contexts/LoadingContext";
-import { useNotification } from "../../../../common/hooks/useNotification";
-import { useTranslation } from "../../../../common/i18n/hooks/useTranslation";
-import { useNavigate } from "react-router-dom";
-import { OVERVIEW_ROUTE } from "../../../../router/Routes";
 
 export interface LoginContext {
   state: LoginState;

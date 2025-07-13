@@ -14,7 +14,7 @@ const ProtectedRoute = (props: Readonly<ProtectedRouteProps>) => {
   const navigate = useNavigate();
   const translate = useTranslation();
   const { showError } = useNotification();
-console.log(isFetching)
+  
   useEffect(() => {
     if (!user && !isFetching && !isLoading) {
       showError(translate("not_logged_in_error"));

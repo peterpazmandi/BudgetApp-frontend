@@ -13,11 +13,20 @@ const userContext = createContext<UserContext | null>(null);
 export function UserProvider(props: {
   children: React.ReactNode;
 }): React.ReactElement {
-  
-  const { data: user, isFetching, isLoading } = useUserQuery();
+  const {
+    data: user,
+    isFetching,
+    isLoading,
+  } = useUserQuery();
 
   return (
-    <userContext.Provider value={{ user, isFetching, isLoading }}>
+    <userContext.Provider
+      value={{
+        user,
+        isFetching,
+        isLoading
+      }}
+    >
       {props.children}
     </userContext.Provider>
   );
