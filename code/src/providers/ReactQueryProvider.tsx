@@ -7,6 +7,7 @@ import {
 import { useState } from "react";
 import { QueryKeys } from "../common/enums/QueryKeys";
 import { useNotification } from "../common/hooks/useNotification";
+import { useAuthContext } from "../contexts/AuthContext";
 
 export default function ReactQueryProvider({
   children,
@@ -14,6 +15,7 @@ export default function ReactQueryProvider({
   children: React.ReactNode;
 }>) {
   const { showError } = useNotification();
+  const { setIsAuthRejected } = useAuthContext();
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -22,6 +24,7 @@ export default function ReactQueryProvider({
             const message = error?.body?.detail as string;
             showError(message);
             if (error?.body?.status === 401) {
+              setIsAuthRejected(true);
               queryClient.removeQueries({ queryKey: [QueryKeys.USER] });
             }
           },
@@ -31,6 +34,7 @@ export default function ReactQueryProvider({
             const message = error?.body?.detail as string;
             showError(message);
             if (error?.body?.status === 401) {
+              setIsAuthRejected(true);
               queryClient.removeQueries({ queryKey: [QueryKeys.USER] });
             }
           },

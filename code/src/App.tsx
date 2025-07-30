@@ -8,6 +8,8 @@ import BudgetAppRoutes from "./router/BudgetAppRoutes";
 import { LoadingProvider } from "./contexts/LoadingContext";
 import { TranslationProvider } from "./common/i18n/context/TranslationContext";
 import { UserProvider } from "./contexts/UserContext";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
   return (
@@ -18,19 +20,22 @@ function App() {
       }}
     >
       <BrowserRouter>
-        <ReactQueryProvider>
-          <ThemeProvider>
-            <TranslationProvider>
-              <UserProvider>
-                <LoadingProvider>
-                  <Suspense fallback={<FullPageSpinner />}>
-                    <BudgetAppRoutes />
-                  </Suspense>
-                </LoadingProvider>
-              </UserProvider>
-            </TranslationProvider>
-          </ThemeProvider>
-        </ReactQueryProvider>
+        <AuthProvider>
+          <ReactQueryProvider>
+            <ReactQueryDevtools initialIsOpen={false} />
+            <ThemeProvider>
+              <TranslationProvider>
+                <UserProvider>
+                  <LoadingProvider>
+                    <Suspense fallback={<FullPageSpinner />}>
+                      <BudgetAppRoutes />
+                    </Suspense>
+                  </LoadingProvider>
+                </UserProvider>
+              </TranslationProvider>
+            </ThemeProvider>
+          </ReactQueryProvider>
+        </AuthProvider>
       </BrowserRouter>
     </SnackbarProvider>
   );
