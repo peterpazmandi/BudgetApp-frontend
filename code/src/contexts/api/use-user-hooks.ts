@@ -4,7 +4,7 @@ import { QueryKeys } from "../../common/enums/QueryKeys";
 import { useAuthContext } from "../AuthContext";
 
 const queryKey: QueryKey = [QueryKeys.USER];
-const STALE_TIME = 1000 * 10; // 5 minutes
+const STALE_TIME = 1000 * 60 * 60 * 24; // 1 day in milliseconds
 
 export function useUserQuery() {
   const { isAuthRejected } = useAuthContext();

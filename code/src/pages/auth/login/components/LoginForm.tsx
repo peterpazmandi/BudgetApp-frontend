@@ -1,12 +1,11 @@
 import { EnvelopeIcon, LockClosedIcon } from "@heroicons/react/24/outline";
-import ButtonInvert from "../../../../components/ButtonInvert";
+import { useTranslation } from "../../../../common/i18n/hooks/useTranslation";
 import InputField from "../../../../components/InputField";
 import { useLoginContext } from "../context/LoginContext";
-import { useTranslation } from "../../../../common/i18n/hooks/useTranslation";
 
 const LoginForm = () => {
   const translate = useTranslation();
-  const { state, handleEmailChange, handlePasswordChange, handleLogin } =
+  const { state, handleEmailChange, handlePasswordChange, handleLogin, isEmailValid, isPasswordValid } =
     useLoginContext();
 
   return (
@@ -21,7 +20,7 @@ const LoginForm = () => {
         }}
         icon={<EnvelopeIcon />}
       />
-
+      
       <InputField
         id="password"
         type="password"
@@ -31,10 +30,11 @@ const LoginForm = () => {
           handlePasswordChange(value);
         }}
         icon={<LockClosedIcon />}
+        onActionClick={function (): void {
+          handleLogin();
+        }}
+        isValueValid={isEmailValid && isPasswordValid}
       />
-      <ButtonInvert onClick={handleLogin} className="mt-20">
-        {translate("auth_login")}
-      </ButtonInvert>
     </>
   );
 };
