@@ -11,6 +11,7 @@ import {
   loginReducer,
   LoginState,
 } from "../reducer/loginReducer";
+import { useValidator } from "../../../../common/hooks/useValidator";
 
 export interface LoginContext {
   state: LoginState;
@@ -18,6 +19,8 @@ export interface LoginContext {
   handleEmailChange: (email: string) => void;
   handlePasswordChange: (password: string) => void;
   handleLogin: () => void;
+  isEmailValid: boolean;
+  isPasswordValid: boolean;
 }
 
 const loginContext = createContext<LoginContext | null>(null);
@@ -31,6 +34,7 @@ export function LoginProvider(props: {
   const { showSuccess } = useNotification();
   const translate = useTranslation();
   const navigate = useNavigate();
+  const { validateEmail, isEmptyString } = useValidator();
 
   useEffect(() => {
     setIsLoading(loginMutation.isPending);
@@ -65,6 +69,9 @@ export function LoginProvider(props: {
     });
   };
 
+  const isEmailValid = validateEmail(state.email);
+  const isPasswordValid = !isEmptyString(state.password);
+
   return (
     <loginContext.Provider
       value={{
@@ -73,6 +80,8 @@ export function LoginProvider(props: {
         handleEmailChange,
         handlePasswordChange,
         handleLogin,
+        isEmailValid,
+        isPasswordValid
       }}
     >
       {props.children}

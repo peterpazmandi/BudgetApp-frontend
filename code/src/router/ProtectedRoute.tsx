@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useUserContext } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
-import { LANDING_PAGE_ROUTE } from "../router/Routes";
-import { useTranslation } from "../common/i18n/hooks/useTranslation";
 import { useNotification } from "../common/hooks/useNotification";
+import { useTranslation } from "../common/i18n/hooks/useTranslation";
+import { useUserContext } from "../contexts/UserContext";
+import { LANDING_PAGE_ROUTE } from "../router/Routes";
 
 interface ProtectedRouteProps {
   element: React.ReactElement;
@@ -14,7 +14,7 @@ const ProtectedRoute = (props: Readonly<ProtectedRouteProps>) => {
   const navigate = useNavigate();
   const translate = useTranslation();
   const { showError } = useNotification();
-  
+
   useEffect(() => {
     if (!user && !isFetching && !isLoading) {
       showError(translate("not_logged_in_error"));
