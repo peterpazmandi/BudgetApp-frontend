@@ -26,6 +26,17 @@ export class AuthApiService {
         });
     }
     /**
+     * Resends verification email for logged in user
+     * @returns any OK
+     * @throws ApiError
+     */
+    public static resendVerificationEmail(): CancelablePromise<Record<string, any>> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/v1/auth/me/resend-verification',
+        });
+    }
+    /**
      * Login using registered email and password
      * @param requestBody
      * @returns UserDto OK
@@ -39,6 +50,23 @@ export class AuthApiService {
             url: '/api/v1/auth/login',
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+    /**
+     * Verify email of registered user
+     * @param token
+     * @returns any OK
+     * @throws ApiError
+     */
+    public static verifyEmail(
+        token: string,
+    ): CancelablePromise<Record<string, any>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/v1/auth/me/verify-email',
+            query: {
+                'token': token,
+            },
         });
     }
 }

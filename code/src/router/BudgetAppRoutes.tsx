@@ -6,6 +6,7 @@ import {
   LOGIN_ROUTE,
   OVERVIEW_ROUTE,
   REGISTER_ROUTE,
+  VERIFY_EMAIL_ROUTE,
 } from "./Routes";
 import Register from "../pages/auth/register/Register";
 import { useLoading } from "../contexts/LoadingContext";
@@ -13,6 +14,7 @@ import FullPageSpinner from "../components/FullPageSpinner";
 import { RegisterProvider } from "../pages/auth/register/context/RegisterContext";
 import ProtectedRoute from "./ProtectedRoute";
 import Overview from "../pages/overview/Overview";
+import VerifyEmail from "../pages/auth/verifyEmail/VerifyEmail";
 
 const BudgetAppRoutes = () => {
   const { isLoading } = useLoading();
@@ -32,6 +34,7 @@ const BudgetAppRoutes = () => {
             </RegisterProvider>
           }
         />
+        <Route path={VERIFY_EMAIL_ROUTE} element={<VerifyEmail />} />
         {/* Protected routes */}
         <Route
           path={OVERVIEW_ROUTE}

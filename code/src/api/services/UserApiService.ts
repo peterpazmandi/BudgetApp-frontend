@@ -8,17 +8,6 @@ import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
 export class UserApiService {
     /**
-     * Resends for logged in user
-     * @returns any OK
-     * @throws ApiError
-     */
-    public static resendVerificationEmail(): CancelablePromise<Record<string, any>> {
-        return __request(OpenAPI, {
-            method: 'POST',
-            url: '/api/v1/users/me/resend-verification',
-        });
-    }
-    /**
      * Gets logged in user info
      * @returns UserDto OK
      * @throws ApiError
